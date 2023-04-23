@@ -2,8 +2,9 @@ package org.example.dao;
 
 import org.example.model.Animal;
 
-import java.awt.*;
+
 import java.sql.SQLException;
+import java.util.List;
 
 // Animal Data Access Object <- clasa pentru a accesa date din "animals"
 // manipulare structura baya de date( creare si stergere tabel)

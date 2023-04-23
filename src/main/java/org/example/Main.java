@@ -96,7 +96,7 @@ public class Main {
 
             animalDao.dropTable();
             foodDao.dropTable();
-
+            carDao.createCar(new Car(null))
             LOGGER.info("Tables crated was succesful");
 
 

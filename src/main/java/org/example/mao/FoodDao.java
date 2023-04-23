@@ -3,8 +3,10 @@ package org.example.mao;
 import org.example.model.Food;
 
 
-import java.awt.*;
+
 import java.sql.SQLException;
+// atentie la importarea (java.util.List)
+import java.util.List;
 
 public interface FoodDao {
 
@@ -15,6 +17,7 @@ public interface FoodDao {
     void create(Food food) throws SQLException;
 
     // gasire date   READ food
+    // atentie la importarea (java.util.List)
     List<Food> read() throws SQLException;
     // modificare date   UPDATE food
 

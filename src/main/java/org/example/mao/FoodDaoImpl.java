@@ -47,7 +47,7 @@ public class FoodDaoImpl implements FoodDao {
             food.setName(rs.getString(2));
             food.setDescription(rs.getString(3));
             food.setCaloriesPer100(rs.getInt(4));
-            food.setExpirationDate(rs.getInt(5));
+            food.setExpirationDate(rs.getDate(5));
 
             foods.add(food);
         }
