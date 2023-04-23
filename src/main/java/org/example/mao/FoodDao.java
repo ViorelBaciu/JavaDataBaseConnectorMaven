@@ -1,5 +1,7 @@
 package org.example.mao;
 
+import org.example.model.Food;
+
 import java.sql.SQLException;
 
 public interface FoodDao {
@@ -8,7 +10,7 @@ public interface FoodDao {
     void createTable() throws SQLException;
 
     //adaugare date  CREATE food
-
+    void create(Food food) throws SQLException;
     // gasire date   READ food
 
     // modificare date   UPDATE food

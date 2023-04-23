@@ -1,6 +1,9 @@
 package org.example.mao;
 
+import org.example.model.Food;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -21,6 +24,18 @@ public class FoodDaoImpl implements FoodDao {
                 "calories_per_100 integer," +
                 "expiration_date date," +
                 "primary key(id) )");
+    }
+    @Override
+    public void create(Food food) throws SQLException{
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "insert into food(name,species) values(?,?)"
+        );
+        preparedStatement.setInt(1,food.getId());
+        preparedStatement.setString(2,food.getName());
+        preparedStatement.setString(3,food.getDescription());
+        preparedStatement.setInt(4,food.getCalories_per_100());
+        preparedStatement.setDate(4,food.getExpiration_date());
+        preparedStatement.execute();
     }
     @Override
     public void dropTable() throws SQLException{
