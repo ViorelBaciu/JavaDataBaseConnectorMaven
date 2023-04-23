@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class FoodMaoImpl {
+public class FoodDaoImpl implements FoodDao {
 
     private final Connection connection;
 
-    public FoodMaoImpl(Connection connection){
+    public FoodDaoImpl(Connection connection){
         this.connection = connection;
     }
 
@@ -23,9 +23,9 @@ public class FoodMaoImpl {
                 "primary key(id) )");
     }
     @Override
-    public void dropTabll() throws SQLException{
+    public void dropTable() throws SQLException{
         Statement statement = connection.createStatement();
-        statement.execute("drop table food")
+        statement.execute("drop table food");
     }
 
 }

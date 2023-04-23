@@ -2,7 +2,7 @@ package org.example.mao;
 
 import java.sql.SQLException;
 
-public interface FoodMao {
+public interface FoodDao {
 
     // create table
     void createTable() throws SQLException;

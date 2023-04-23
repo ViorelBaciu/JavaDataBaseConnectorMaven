@@ -3,10 +3,9 @@ package org.example;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.example.dao.AnimalDao;
 import org.example.dao.AnimalDaoImpl;
-import org.example.mao.FoodMao;
-import org.example.mao.FoodMaoImpl;
+import org.example.mao.FoodDao;
+import org.example.mao.FoodDaoImpl;
 
-import javax.swing.undo.StateEdit;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +34,7 @@ public class Main {
             LOGGER.log(Level.INFO, "Connection successful");
 
             AnimalDao animalDao = new AnimalDaoImpl(connection);
-            FoodMao foodMao = new FoodMaoImpl(connection);
+            FoodDao foodDao = new FoodDaoImpl(connection);
 
 
             // statement <- used for transfering sql commands to db server
@@ -53,7 +52,7 @@ public class Main {
             statement.execute(" update Animals Set Name = \" Dog2 \" where Id = 2 ");
 
             animalDao.createTable();
-            foodMao.createTable();
+            foodDao.createTable();
 
             LOGGER.info("Tables create was successfull");
 
@@ -96,7 +95,7 @@ public class Main {
             }
 
             animalDao.dropTable();
-            foodMao.dropTable();
+            foodDao.dropTable();
 
             LOGGER.info("Tables crated was succesful");
 
