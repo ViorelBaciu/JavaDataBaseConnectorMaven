@@ -6,6 +6,7 @@ import org.example.dao.AnimalDaoImpl;
 import org.example.mao.FoodDao;
 import org.example.mao.FoodDaoImpl;
 import org.example.model.Animal;
+import org.example.model.Food;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -50,6 +51,11 @@ public class Main {
             animalDao.create(new Animal(null,"Lulu","cat"));
             LOGGER.info("Data insertion was successful");
 
+            Date expirationDate = Date.valueOf("2024-10-12");
+            foodDao.create(new Food(null,"Ciocolata"," ciocolata de casa",
+                        550,  expirationDate));
+            foodDao.create(new Food(null,"Alune"," pung de 500g de alune prajite",
+                    650, expirationDate));
 
             // pentru ca este un varchar , intelij se asteapta sa fie scris intre ghilimele
             statement.execute(" update Animals Set Name = \" Dog2 \" where Id = 2 ");
@@ -60,20 +66,11 @@ public class Main {
             LOGGER.info("Tables create was successfull");
 
 
-//            PreparedStatement preparedStatement = connection.prepareStatement("insert into food" +
-//                    "(name, description, calories_per_100, expiration_date) values (?,?,?,?)");
-//            preparedStatement.setString(1, "ciocolata");
-//            preparedStatement.setString(2, "ciocolata de casa");
-//            preparedStatement.setInt(3, 550);
-//            Date expirationDate = Date.valueOf("2024-10-12");
-//            preparedStatement.setDate(4, expirationDate);
 
 
             // Intotdeauna trebuie rulat.execute() daac vrem sa fie executat codul sql de baza de date
 //            preparedStatement.execute();
-//
-//            preparedStatement.setString(1, "alune");
-//            preparedStatement.setString(2, "Punga de 500g alune prajite");
+
 
             ResultSet rs = statement.executeQuery("SELECT * FROM animals");
             while (rs.next() == true) {
