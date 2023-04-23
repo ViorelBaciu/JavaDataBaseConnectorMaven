@@ -1,6 +1,8 @@
 package org.example;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import org.example.dao.AnimalDao;
+import org.example.dao.AnimalDaoImpl;
 
 import javax.swing.undo.StateEdit;
 import java.sql.*;
@@ -30,10 +32,12 @@ public class Main {
             Connection connection = dataSource.getConnection();
             LOGGER.log(Level.INFO, "Connection successful");
 
+            AnimalDao animalDao = new AnimalDaoImpl(connection);
+
             // statement <- used for transfering sql commands to db server
             Statement statement = connection.createStatement();
 
-            // TODO Animals.createTable
+            animalDao.createTable();
             LOGGER.info("Created table animals");
 
             // we can reuse statement object
@@ -44,12 +48,16 @@ public class Main {
             // pentru ca este un varchar , intelij se asteapta sa fie scris intre ghilimele
             statement.execute(" update Animals Set Name = \" Dog2 \" where Id = 2 ");
 
+            animalDao.createTable();
             statement.execute("create table if not exists food (id integer auto_increment, " +
                     "name varchar(100)," +
                     "description varchar(100), " +
                     "calories_per_100 integer," +
                     "expiration_date date," +
                     "primary key(id) )");
+            LOGGER.info("Tables create was successfull");
+
+
             PreparedStatement preparedStatement = connection.prepareStatement("insert into food" +
                     "(name, description, calories_per_100, expiration_date) values (?,?,?,?)");
             preparedStatement.setString(1, "ciocolata");
@@ -57,6 +65,7 @@ public class Main {
             preparedStatement.setInt(3, 550);
             Date expirationDate = Date.valueOf("2024-10-12");
             preparedStatement.setDate(4, expirationDate);
+
 
             // Intotdeauna trebuie rulat.execute() daac vrem sa fie executat codul sql de baza de date
             preparedStatement.execute();
@@ -86,11 +95,12 @@ public class Main {
                 System.out.println("Expiration_date: " + rs1.getDate(5));
             }
 
-            // statement.execute("drop table animals");
+            animalDao.dropTable();
             statement.execute("drop table food");
+            LOGGER.info("Tables crated was succesful");
 
-        } catch (
-                SQLException sqlException) {
+
+        } catch (SQLException sqlException) {
             sqlException.printStackTrace();
             LOGGER.log(Level.SEVERE, sqlException.getMessage());
             sqlException.getStackTrace();

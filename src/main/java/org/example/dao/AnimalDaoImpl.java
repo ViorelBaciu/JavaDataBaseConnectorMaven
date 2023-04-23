@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class AnimalDaoImpl implements AnimalDao{
     private final Connection connection;
-    AnimalDaoImpl(Connection connection){
+    public AnimalDaoImpl(Connection connection){
         this.connection = connection;
     }
     @Override
