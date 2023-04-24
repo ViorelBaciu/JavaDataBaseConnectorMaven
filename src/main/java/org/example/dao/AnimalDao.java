@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 // Animal Data Access Object <- clasa pentru a accesa date din "animals"
-// manipulare structura baya de date( creare si stergere tabel)
+// manipulare structura baza de date( creare si stergere tabel)
 // manipulare date = CRUD
 public interface AnimalDao {
 

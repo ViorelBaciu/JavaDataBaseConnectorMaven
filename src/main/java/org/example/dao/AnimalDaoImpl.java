@@ -2,7 +2,6 @@ package org.example.dao;
 
 import org.example.model.Animal;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,6 @@ public class AnimalDaoImpl implements AnimalDao{
             animal.setId(rs.getInt(1));
             animal.setName(rs.getString(2));
             animal.setSpecies(rs.getString(3));
-
             animals.add(animal);
         }
         return animals;

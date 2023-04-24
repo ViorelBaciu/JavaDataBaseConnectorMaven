@@ -11,7 +11,7 @@ import org.example.model.Animal;
 import org.example.model.Food;
 
 import java.sql.*;
-import java.util.List;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,6 +53,7 @@ public class Main {
             animalDao.create(new Animal(null, "Rex", "dog"));
             animalDao.create(new Animal(null, "Lulu", "cat"));
             LOGGER.info("Data insertion was successful");
+
             animalDao.deleteAnimal(1);
             LOGGER.info("The method for delete an information from animal was succesfully");
 
@@ -62,7 +63,7 @@ public class Main {
 //            carDao.createCar(new Car(null, " Renault23 ", Date.valueOf("2008-10-07")));
 //            carDao.updateCar(new Car(1, "BMW", Date.valueOf("2011-02-12")));
 //            List<Car> cars = carDao.readAllCars();
-            System.out.println("Masinile din baza de date sunt : ");
+            // System.out.println("Masinile din baza de date sunt : ");
 
             // de verificat inca o data acest for
 //            for (Car c : cars) {
@@ -80,11 +81,10 @@ public class Main {
 
             animalDao.createTable();
             foodDao.createTable();
-
             LOGGER.info("Tables create was successfull");
 
 
-            // Intotdeauna trebuie rulat.execute() daac vrem sa fie executat codul sql de baza de date
+            // Intotdeauna trebuie rulat.execute() daca vrem sa fie executat codul sql de baza de date
 //            preparedStatement.execute();
 
 
