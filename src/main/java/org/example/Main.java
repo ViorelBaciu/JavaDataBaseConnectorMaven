@@ -6,9 +6,12 @@ import org.example.dao.AnimalDaoImpl;
 import org.example.mao.FoodDao;
 import org.example.mao.FoodDaoImpl;
 import org.example.model.Animal;
+
+
 import org.example.model.Food;
 
 import java.sql.*;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,15 +49,30 @@ public class Main {
             LOGGER.info("Created table animals");
 
 
-            animalDao.create(new Animal(null,"Lucky","dog"));
-            animalDao.create(new Animal(null,"Rex","dog"));
-            animalDao.create(new Animal(null,"Lulu","cat"));
+            animalDao.create(new Animal(null, "Lucky", "dog"));
+            animalDao.create(new Animal(null, "Rex", "dog"));
+            animalDao.create(new Animal(null, "Lulu", "cat"));
             LOGGER.info("Data insertion was successful");
+            animalDao.deleteAnimal(1);
+            LOGGER.info("The method for delete an information from animal was succesfully");
+
+
+//            carDao.createTable();
+//            carDao.createCar(new Car(null, " Renault ", Date.valueOf("2008-10-07")));
+//            carDao.createCar(new Car(null, " Renault23 ", Date.valueOf("2008-10-07")));
+//            carDao.updateCar(new Car(1, "BMW", Date.valueOf("2011-02-12")));
+//            List<Car> cars = carDao.readAllCars();
+            System.out.println("Masinile din baza de date sunt : ");
+
+            // de verificat inca o data acest for
+//            for (Car c : cars) {
+//                System.out.println(c);
+//            }
 
             Date expirationDate = Date.valueOf("2024-10-12");
-            foodDao.create(new Food(null,"Ciocolata"," ciocolata de casa",
-                        550,  expirationDate));
-            foodDao.create(new Food(null,"Alune"," pung de 500g de alune prajite",
+            foodDao.create(new Food(null, "Ciocolata", " ciocolata de casa",
+                    550, expirationDate));
+            foodDao.create(new Food(null, "Alune", " pung de 500g de alune prajite",
                     650, expirationDate));
 
             // pentru ca este un varchar , intelij se asteapta sa fie scris intre ghilimele
@@ -64,8 +82,6 @@ public class Main {
             foodDao.createTable();
 
             LOGGER.info("Tables create was successfull");
-
-
 
 
             // Intotdeauna trebuie rulat.execute() daac vrem sa fie executat codul sql de baza de date
@@ -96,8 +112,10 @@ public class Main {
 
             animalDao.dropTable();
             foodDao.dropTable();
-            carDao.createCar(new Car(null))
+//            carDao.dropTable();
             LOGGER.info("Tables crated was succesful");
+
+            // ca sa salvam
 
 
         } catch (SQLException sqlException) {

@@ -44,6 +44,12 @@ public class AnimalDaoImpl implements AnimalDao{
         }
         return animals;
     }
+    public void deleteAnimal(Integer animalId) throws SQLException{
+        PreparedStatement preparedStatement = connection.prepareStatement
+                ("Deleted from Animals where Id = ?");
+        preparedStatement.setInt(1,animalId);
+        preparedStatement.execute();
+    }
     @Override
     public void dropTable() throws SQLException{
         Statement statement = connection.createStatement();

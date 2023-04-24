@@ -22,8 +22,9 @@ public interface AnimalDao {
     List<Animal> read() throws SQLException;
     //modificare date    UPDATE animals
 
-    // stergere date     DELETE animals
 
+    // stergere date     DELETE animals
+    void deleteAnimal(Integer animalId) throws SQLException;
     //sters table
     void dropTable() throws SQLException;
 }
